@@ -3,78 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quinielas Gana-gol - Martes 17 Nov</title>
+<title>QUINIELAS GANA-GOL - MARTES 17</title>
 <style>
-  body{margin:0;font-family:Arial,sans-serif;background:#ff6a00;color:#fff;text-align:center}
-  .container{max-width:480px;margin:auto;padding:20px}
-  h1{font-size:32px;margin:5px 0;text-shadow:2px 2px 0 #7a2e00}
-  .sub{background:#fff;color:#ff6a00;padding:8px;border-radius:20px;font-weight:bold}
-  .ball{font-size:80px;animation:volar 1s infinite alternate}
-  @keyframes volar{from{transform:translateX(-10px) rotate(-10deg)}to{transform:translateX(10px) rotate(10deg)}}
-  .partido{background:#2b1600;margin:10px 0;padding:12px;border-radius:12px;text-align:left}
-  .partido b{font-size:16px}
-  select{width:100%;padding:10px;margin-top:8px;border-radius:8px;border:none;font-size:16px}
-  input{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;font-size:16px;box-sizing:border-box}
-  button{background:#ffe600;color:#000;font-size:20px;font-weight:bold;padding:14px;width:100%;border:none;border-radius:12px;cursor:pointer}
-  #resultado{background:#fff;color:#000;padding:12px;border-radius:12px;margin-top:15px;display:none;white-space:pre-line}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial, sans-serif}
+body{background:#0a0a2e;background-image:radial-gradient(circle at 20% 20%, #ff6a00 0%, transparent 40%), radial-gradient(circle at 80% 80%, #ff2200 0%, transparent 40%), linear-gradient(180deg,#000428,#004e92);min-height:100vh;padding:15px;color:white}
+.header{text-align:center;padding:10px 0}
+.header h1{font-size:42px;line-height:.9;font-weight:900;color:#FFD700;text-shadow:0 0 5px #ff6a00,0 0 15px #ff3300,0 0 25px #ff0000,3px 3px 0 #7a0000}
+.header h1 span{color:#fff;text-shadow:0 0 10px #ff6a00,0 0 20px #ff3300}
+.subtitle{margin:8px auto 15px;background:#ff6a00;color:white;font-weight:900;padding:8px;border-radius:20px;font-size:15px;box-shadow:0 0 20px #ff4400;border:2px solid #FFD700}
+.ball-wrap{text-align:center;font-size:80px;filter:drop-shadow(0 0 20px #ff6a00) drop-shadow(0 0 30px #ff2200);margin:5px 0}
+input{width:100%;padding:14px;border-radius:12px;border:none;font-size:16px;margin-bottom:10px;border:2px solid #ff6a00}
+.match{background:white;color:#111;border-radius:15px;padding:12px;margin-bottom:10px;box-shadow:0 0 15px rgba(255,106,0,.6);border-left:6px solid #ff6a00}
+.match-top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:900;font-size:16px}
+.flag{font-size:34px}
+.vs{color:#ff6a00;font-weight:900}
+.hora{font-size:12px;background:#111;color:#FFD700;padding:3px 8px;border-radius:20px}
+.boxes{display:flex;gap:8px;margin-top:10px}
+.box{flex:1;text-align:center}
+.box label{font-size:11px;font-weight:900;color:#666;display:block}
+.box input{text-align:center;border:2px solid #ddd;padding:10px;font-weight:900;font-size:18px;margin:0}
+.box select{width:100%;padding:10px;border-radius:10px;border:2px solid #ff6a00;background:#111;color:#FFD700;font-weight:900;font-size:18px;text-align:center}
+.btn{background:linear-gradient(180deg,#FFD700,#ff6a00);color:#000;font-weight:900;font-size:20px;padding:16px;border:none;border-radius:15px;width:100%;box-shadow:0 0 25px #ff4400;cursor:pointer}
+.footer{text-align:center;margin-top:15px;font-size:28px;font-weight:900;color:#FFD700;text-shadow:0 0 10px #ff3300,0 0 20px #ff0000;line-height:1}
+.footer small{display:block;color:white;font-size:12px;text-shadow:none;margin-top:5px}
+.q-title{background:#FFD700;color:#000;text-align:center;font-weight:900;padding:10px;border-radius:12px;margin:15px 0 10px;font-size:18px;box-shadow:0 0 15px #ff6a00}
+.q-selector{background:white;color:#111;padding:12px;border-radius:15px;margin-bottom:5px}
+.q-selector label{font-weight:900;font-size:14px}
+.q-selector select{width:100%;padding:12px;border-radius:10px;border:2px solid #ff6a00;background:#111;color:#FFD700;font-weight:900;font-size:18px;text-align:center;margin-top:5px}
+.total-box{background:#111;color:#FFD700;text-align:center;padding:10px;border-radius:12px;font-weight:900;margin-bottom:10px;border:2px dashed #ff6a00}
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>QUINIELAS GANA-GOL</h1>
-  <div class="sub">MARTES 17 DE NOVIEMBRE - JORNADA ESPECIAL</div>
-  <div class="ball">⚽</div>
-  <p>Código aparte del martes: <b>GG-MARTES-17</b></p>
-
-  <input id="nombre" placeholder="Tu nombre">
-  <input id="codigo" placeholder="Escribe el código: GG-MARTES-17">
-
-  <div id="juegos"></div>
-
-  <button onclick="enviar()">ENVIAR MI QUINIELA</button>
-  <div id="resultado"></div>
+<div class="header">
+<h1>QUINIELAS<br><span>GANA-GOL</span></h1>
+<div class="subtitle">🔥 MARTES 17 DE NOVIEMBRE - JORNADA ESPECIAL 🔥</div>
 </div>
 
+<div class="ball-wrap">🔥⚽🔥</div>
+
+<input id="nombre" placeholder="Tu nombre">
+
+<div class="q-selector">
+<label>🎟️ ¿Cuántas quinielas quieres jugar?</label>
+<select id="numQuinielas" onchange="render()">
+<option value="1">1 Quiniela - $100</option>
+<option value="2">2 Quinielas - $200</option>
+<option value="3">3 Quinielas - $300</option>
+<option value="4">4 Quinielas - $400</option>
+<option value="5">5 Quinielas - $500</option>
+</select>
+</div>
+
+<div id="total" class="total-box">Total a pagar: $100 pesitos</div>
+
+<div id="quinielas"></div>
+
+<button class="btn" onclick="enviar()">🔥 APARTAR MIS LUGARES POR WHATSAPP 🔥</button>
+
+<div class="footer">🔥⚽ Quinielas<br>Gana-Gol 🔥<small>El que haga más puntos se lleva el bote • $100 por quiniela</small></div>
+
 <script>
-const partidos = [
-  "Singapur vs Brasil - 04:00",
-  "Gales vs Portugal - 13:45",
-  "Dinamarca vs Noruega - 13:45",
-  "Chile vs Colombia - 17:00",
-  "Argentina vs Costa Rica - 18:00",
-  "Estados Unidos vs Haití - 18:00",
-  "México vs Jamaica - 20:30"
+const partidos=[
+{n:'Singapur vs Brasil',f1:'🇸🇬',e1:'Singapur',f2:'🇧🇷',e2:'Brasil',h:'04:00 AM'},
+{n:'Gales vs Portugal',f1:'🏴󐁧󐁢󐁷󐁬󐁳󐁿',e1:'Gales',f2:'🇵🇹',e2:'Portugal',h:'13:45 PM'},
+{n:'Dinamarca vs Noruega',f1:'🇩🇰',e1:'Dinamarca',f2:'🇳🇴',e2:'Noruega',h:'13:45 PM'},
+{n:'Chile vs Colombia',f1:'🇨🇱',e1:'Chile',f2:'🇨🇴',e2:'Colombia',h:'11:00 AM'},
+{n:'México vs Paraguay',f1:'🇲🇽',e1:'México',f2:'🇵🇾',e2:'Paraguay',h:'18:00 PM'}
 ];
-
-const div = document.getElementById('juegos');
-partidos.forEach((p, i) => {
-  div.innerHTML += `<div class="partido"><b>${i+1}. ${p}</b>
-  <select id="p${i}"><option value="">Elige...</option><option value="L">L - Local</option><option value="E">E - Empate</option><option value="V">V - Visita</option></select></div>`;
+function render(){
+let n=parseInt(document.getElementById('numQuinielas').value);
+document.getElementById('total').innerText=`Total a pagar: $${n*100} pesitos`;
+let html='';
+for(let q=1;q<=n;q++){
+html+=`<div class="q-title">🎟️ QUINIELA #${q}</div>`;
+partidos.forEach((p,i)=>{
+html+=`<div class="match"><div class="match-top"><span class="flag">${p.f1}</span> ${p.e1} <span class="vs">VS</span> ${p.e2} <span class="flag">${p.f2}</span></div><div style="text-align:center;margin-top:5px"><span class="hora">${p.h}</span></div><div class="boxes"><div class="box"><label>LOCAL</label><input id="l${q}_${i}" placeholder="-"></div><div class="box"><label>VISITA</label><input id="v${q}_${i}" placeholder="-"></div><div class="box"><label>ELIGE</label><select id="r${q}_${i}"><option value="L">L - Local</option><option value="E">E - Empate</option><option value="V">V - Visita</option></select></div></div></div>`;
 });
-
+}
+document.getElementById('quinielas').innerHTML=html;
+}
+render();
 function enviar(){
-  const nombre = document.getElementById('nombre').value.trim();
-  const codigo = document.getElementById('codigo').value.trim().toUpperCase();
-  if(!nombre){ alert('Pon tu nombre'); return; }
-  if(codigo !== 'GG-MARTES-17'){ alert('Código incorrecto. Es GG-MARTES-17'); return; }
-
-  let texto = `QUINIELAS GANA-GOL - MARTES 17\nNombre: ${nombre}\nCódigo: ${codigo}\n\n`;
-  let faltan = false;
-  partidos.forEach((p,i)=>{
-    const v = document.getElementById('p'+i).value;
-    if(!v) faltan = true;
-    texto += `${p} = ${v || '-'}\n`;
-  });
-  if(faltan){ alert('Te falta elegir un partido'); return; }
-
-  const res = document.getElementById('resultado');
-  res.style.display = 'block';
-  res.innerText = texto + '\n¡Listo! Copia esto y mándalo por WhatsApp.';
-  // Guarda en el navegador
-  localStorage.setItem('quiniela-martes-'+nombre, texto);
-  // Abre WhatsApp con el texto
-  const url = 'https://wa.me/?text=' + encodeURIComponent(texto);
-  window.open(url, '_blank');
+let n=document.getElementById('nombre').value;
+if(!n){alert('Pon tu nombre bro');return}
+let num=parseInt(document.getElementById('numQuinielas').value);
+let txt=`🔥 QUINIELAS GANA-GOL - MARTES 17 🔥%0A%0ANombre: ${n}%0ACantidad: ${num} quiniela(s) - Total: $${num*100}%0A%0A`;
+for(let q=1;q<=num;q++){
+txt+=`--- QUINIELA #${q} ---%0A`;
+partidos.forEach((p,i)=>{
+let l=document.getElementById(`l${q}_${i}`).value||'-';
+let v=document.getElementById(`v${q}_${i}`).value||'-';
+let r=document.getElementById(`r${q}_${i}`).value||'-';
+txt+=`${p.n}: ${l}-${v} (${r})%0A`;
+});
+txt+=`%0A`;
+}
+txt+=`Ya pagué $${num*100}`;
+window.open(`https://wa.me/5214420000000?text=${txt}`,'_blank');
 }
 </script>
 </body>
