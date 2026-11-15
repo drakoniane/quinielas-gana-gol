@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quinielas Gana-gol - Martes 17 Nov</title>
+<style>
+  body{margin:0;font-family:Arial,sans-serif;background:#ff6a00;color:#fff;text-align:center}
+  .container{max-width:480px;margin:auto;padding:20px}
+  h1{font-size:32px;margin:5px 0;text-shadow:2px 2px 0 #7a2e00}
+  .sub{background:#fff;color:#ff6a00;padding:8px;border-radius:20px;font-weight:bold}
+  .ball{font-size:80px;animation:volar 1s infinite alternate}
+  @keyframes volar{from{transform:translateX(-10px) rotate(-10deg)}to{transform:translateX(10px) rotate(10deg)}}
+  .partido{background:#2b1600;margin:10px 0;padding:12px;border-radius:12px;text-align:left}
+  .partido b{font-size:16px}
+  select{width:100%;padding:10px;margin-top:8px;border-radius:8px;border:none;font-size:16px}
+  input{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;font-size:16px;box-sizing:border-box}
+  button{background:#ffe600;color:#000;font-size:20px;font-weight:bold;padding:14px;width:100%;border:none;border-radius:12px;cursor:pointer}
+  #resultado{background:#fff;color:#000;padding:12px;border-radius:12px;margin-top:15px;display:none;white-space:pre-line}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>QUINIELAS GANA-GOL</h1>
+  <div class="sub">MARTES 17 DE NOVIEMBRE - JORNADA ESPECIAL</div>
+  <div class="ball">⚽</div>
+  <p>Código aparte del martes: <b>GG-MARTES-17</b></p>
+
+  <input id="nombre" placeholder="Tu nombre">
+  <input id="codigo" placeholder="Escribe el código: GG-MARTES-17">
+
+  <div id="juegos"></div>
+
+  <button onclick="enviar()">ENVIAR MI QUINIELA</button>
+  <div id="resultado"></div>
+</div>
+
+<script>
+const partidos = [
+  "Singapur vs Brasil - 04:00",
+  "Gales vs Portugal - 13:45",
+  "Dinamarca vs Noruega - 13:45",
+  "Chile vs Colombia - 17:00",
+  "Argentina vs Costa Rica - 18:00",
+  "Estados Unidos vs Haití - 18:00",
+  "México vs Jamaica - 20:30"
+];
+
+const div = document.getElementById('juegos');
+partidos.forEach((p, i) => {
+  div.innerHTML += `<div class="partido"><b>${i+1}. ${p}</b>
+  <select id="p${i}"><option value="">Elige...</option><option value="L">L - Local</option><option value="E">E - Empate</option><option value="V">V - Visita</option></select></div>`;
+});
+
+function enviar(){
+  const nombre = document.getElementById('nombre').value.trim();
+  const codigo = document.getElementById('codigo').value.trim().toUpperCase();
+  if(!nombre){ alert('Pon tu nombre'); return; }
+  if(codigo !== 'GG-MARTES-17'){ alert('Código incorrecto. Es GG-MARTES-17'); return; }
+
+  let texto = `QUINIELAS GANA-GOL - MARTES 17\nNombre: ${nombre}\nCódigo: ${codigo}\n\n`;
+  let faltan = false;
+  partidos.forEach((p,i)=>{
+    const v = document.getElementById('p'+i).value;
+    if(!v) faltan = true;
+    texto += `${p} = ${v || '-'}\n`;
+  });
+  if(faltan){ alert('Te falta elegir un partido'); return; }
+
+  const res = document.getElementById('resultado');
+  res.style.display = 'block';
+  res.innerText = texto + '\n¡Listo! Copia esto y mándalo por WhatsApp.';
+  // Guarda en el navegador
+  localStorage.setItem('quiniela-martes-'+nombre, texto);
+  // Abre WhatsApp con el texto
+  const url = 'https://wa.me/?text=' + encodeURIComponent(texto);
+  window.open(url, '_blank');
+}
+</script>
+</body>
+</html>
