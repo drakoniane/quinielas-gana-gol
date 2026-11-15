@@ -54,3 +54,10 @@ window.open(`https://wa.me/5214420000000?text=${txt}`,'_blank');
 </script>
 </body>
 </html>
+<script>
+const P=[['Singapur','sg','Brasil','br','04:00 AM'],['Gales','gb-wls','Portugal','pt','13:45 PM'],['Dinamarca','dk','Noruega','no','13:45 PM'],['Chile','cl','Colombia','co','11:00 AM'],['México','mx','Paraguay','py','18:00 PM']];
+function render(){let n=+document.getElementById('n').value;document.getElementById('total').innerText='Total a pagar: $'+n*10+' pesitos';let h='';for(let q=1;q<=n;q++){h+='<div class="sub">🎟️ QUINIELA #'+q+'</div>';P.forEach((p,i)=>{h+='<div class="match"><div class="top"><img src="https://flagcdn.com/w80/'+p[1]+'.png"> '+p[0]+' <span class="vs">VS</span> '+p[2]+' <img src="https://flagcdn.com/w80/'+p[3]+'.png"></div><div style="text-align:center;margin-top:5px"><span class="hora">'+p[4]+'</span></div><div class="box"><input id="l'+q+'_'+i+'" placeholder="LOCAL"><input id="v'+q+'_'+i+'" placeholder="VISITA"></div><div class="lev" id="lev'+q+'_'+i+'"><button onclick="sel(this,\'L\',\'lev'+q+'_'+i+'\')">L</button><button onclick="sel(this,\'E\',\'lev'+q+'_'+i+'\')">E</button><button onclick="sel(this,\'V\',\'lev'+q+'_'+i+'\')">V</button></div><input type="hidden" id="r'+q+'_'+i+'"></div>'})}document.getElementById('q').innerHTML=h}
+function sel(b,v,id){document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(id.replace('lev','r')).value=v}
+render();
+function enviar(){let n=document.getElementById('nombre').value;if(!n){alert('Pon tu nombre bro');return}let num=+document.getElementById('n').value;let t='🔥 SUPER QUINIELA MARTES - GANA-GOL 🔥%0A%0ANombre: '+n+'%0ACantidad: '+num+' - Total: $'+num*10+' pesitos%0A%0A';for(let q=1;q<=num;q++){t+='--- QUINIELA #'+q+' ---%0A';P.forEach((p,i)=>{let l=document.getElementById('l'+q+'_'+i).value||'-';let v=document.getElementById('v'+q+'_'+i).value||'-';let r=document.getElementById('r'+q+'_'+i).value||'SIN ELEGIR';t+=p[0]+' vs '+p[2]+': '+l+'-'+v+' ('+r+')%0A'})}t+='%0AYa pagué $'+num*10+' pesitos';window.open('https://wa.me/5214420000000?text='+t,'_blank')}
+</script></body></html>
